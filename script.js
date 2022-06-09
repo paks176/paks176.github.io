@@ -1,11 +1,13 @@
-const buttonLeft = document.querySelector('.slider__controls--buttons-left');
-const buttonRight = document.querySelector('.slider__controls--buttons-right');
+const buttonLeft = document.querySelectorAll('.slider__buttons--left');
+const buttonRight = document.querySelectorAll('.slider__buttons--right');
 const wrapper = document.querySelector('.slider__wrapper');
-const progress = document.querySelectorAll('.slider__controls--progress-point');
+const progress = document.querySelectorAll('.slider__toplayer--progress-point');
 const online = document.querySelectorAll('.slider__logo--right');
 const topHeader = document.querySelectorAll('.slider__content--top-text');
-const progressPoints = document.querySelectorAll('.slider__controls--progress-point');
-const inputs = document.querySelectorAll('.feedback__right--input');
+const progressPoints = document.querySelectorAll('.slider__toplayer--progress-point');
+const input = document.querySelectorAll('.feedback__right--input');
+const modal = document.querySelector('.feedback__modal--helper');
+const submit = document.querySelector('.feedback__right--submit');
 let counter = 1;
 
 // Переключение на нужный слайд кнопками внизу
@@ -70,36 +72,9 @@ progressPoints[2].addEventListener('click', () => {
     }
 });
 
-online[0].setAttribute('style','color:#0ED984');
-online[1].setAttribute('style','color:#3577F6');
-online[2].setAttribute('style','color:#D72DF3');
-
 topHeader[0].setAttribute('style','color:#0ED984;border-bottom: 3px solid #0ED984;');
 topHeader[1].setAttribute('style','color:#3577F6;border-bottom: 3px solid #3577F6;');
 topHeader[2].setAttribute('style','color:#D72DF3;border-bottom: 3px solid #D72DF3;');
-
-// hover-эффекты для кнопок перелистывания
-
-buttonLeft.addEventListener('mouseover', () => {
-    buttonLeft.style.backgroundImage = 'url(img/button_left_hover.png)';
-    buttonLeft.style.opacity = '1'
-});
-
-buttonLeft.addEventListener('mouseleave', () => {
-    buttonLeft.style.backgroundImage = 'url(img/button_left.png)'
-    buttonLeft.style.opacity = '0.5'
-
-});
-
-buttonRight.addEventListener('mouseover', () => {
-    buttonRight.style.backgroundImage = 'url(img/button_right_hover.png)'
-    buttonRight.style.opacity = '1'
-});
-
-buttonRight.addEventListener('mouseleave', () => {
-    buttonRight.style.backgroundImage = 'url(img/button_right.png)'
-    buttonRight.style.opacity = '0.5'
-});
 
 // Функция смены стилей элементов в зависимости от слайда
 
@@ -116,7 +91,7 @@ function changeStyle() {
         });
         progress[0].classList.add('progress-image');
         progress[0].style.borderStyle = 'none';
-        progress[0].innerHTML = '<img src="img/progress_1.png" class="slider__controls--progress-point-image" alt="1"></img>';
+        progress[0].innerHTML = '<img src="img/progress_1.svg" class="slider__controls--progress-point-image" alt="1"></img>';
 
         progress[1].classList.remove('progress-image');
         progress[1].setAttribute('style', 'border:1px solid #FFFFFF');
@@ -125,6 +100,9 @@ function changeStyle() {
         progress[2].classList.remove('progress-image');
         progress[2].setAttribute('style', 'border:1px solid #FFFFFF');
         progress[2].innerHTML = '';
+
+        online[0].setAttribute('style', 'color:#0ED984')
+        online[1].setAttribute('style', 'color:#0ED984')
     }
 
     if (counter === 2) {
@@ -142,11 +120,14 @@ function changeStyle() {
 
         progress[1].classList.add('progress-image')
         progress[1].style.borderStyle = 'none';
-        progress[1].innerHTML = '<img src="img/progress_2.png" class="slider__controls--progress-point-image" alt="1"></img>'
+        progress[1].innerHTML = '<img src="img/progress_2.svg" class="slider__controls--progress-point-image" alt="1"></img>'
 
         progress[2].classList.remove('progress-image');
         progress[2].setAttribute('style', 'border:1px solid #FFFFFF');
         progress[2].innerHTML = '';
+
+        online[0].setAttribute('style', 'color:#3577F6')
+        online[1].setAttribute('style', 'color:#3577F6')
     }
 
     if (counter === 3) {
@@ -168,13 +149,13 @@ function changeStyle() {
 
         progress[2].classList.add('progress-image')
         progress[2].style.borderStyle = 'none';
-        progress[2].innerHTML = '<img src="img/progress_3.png" class="slider__controls--progress-point-image" alt="1"></img>'
+        progress[2].innerHTML = '<img src="img/progress_3.svg" class="slider__controls--progress-point-image" alt="1"></img>'
+
+        online[0].setAttribute('style', 'color:#D72DF3')
+        online[1].setAttribute('style', 'color:#D72DF3')
     }
 
 }
-
-changeStyle();
-
 
 // Переключение слайдов кнопками
 
@@ -196,16 +177,19 @@ function previousSlide() {
         wrapper.style.transform = `translate(-200vw)`;
         counter = 3;
         changeStyle();
+        return
     }
     if (counter === 2) {
         wrapper.style.transform = `translate(0vw)`
         counter = 1;
         changeStyle();
+        return
     }
     if (counter === 3) {
         wrapper.style.transform = `translate(-100vw)`;
         counter = 2;
         changeStyle();
+        return
     }
 }
 
@@ -219,8 +203,12 @@ function buttonPreviousSlide() {
     previousSlide()
 }
 
-buttonLeft.addEventListener('click', buttonPreviousSlide);
-buttonRight.addEventListener('click', buttonNextSlide)
+buttonLeft[0].addEventListener('click', buttonPreviousSlide);
+buttonLeft[1].addEventListener('click', buttonPreviousSlide);
+buttonLeft[2].addEventListener('click', buttonPreviousSlide);
+buttonRight[0].addEventListener('click', buttonNextSlide);
+buttonRight[1].addEventListener('click', buttonNextSlide);
+buttonRight[2].addEventListener('click', buttonNextSlide);
 
 // Маска телефона 
 
@@ -261,4 +249,40 @@ function slideShow() {
     window.myInterval = window.setInterval(nextSlide, 3000);
 }
 
+function hideMessage() {
+    modal.setAttribute('style', 'height: 0%');
+}
+
+function showMessage() {
+    modal.addEventListener('animationend', () => {
+        hideMessage();
+    });
+    modal.setAttribute('style', 'height:100%; animation-duration: 3s; animation-name: appear');
+    input[0].value = '';
+    input[1].value = '';
+}
+
+function checkInputs() {
+    if (input[0].value == '') {
+            input[0].setAttribute('style', 'box-shadow: 0px 0px 8px 0px rgba(255, 10, 0, 0.95) inset;');
+            input[0].focus();
+            return false;
+        } else {
+            if (input[1].value == '') {
+                    input[1].setAttribute('style', 'box-shadow: 0px 0px 8px 0px rgba(255, 10, 0, 0.95) inset;');
+                    input[1].focus();
+                    input[0].setAttribute('style', 'box-shadow: 0px 0px 0px 0px rgba(255, 0, 0, 0.0) inset;')
+                    return false;
+                } else {
+                    input[1].setAttribute('style', 'box-shadow: 0px 0px 0px 0px rgba(255, 0, 0, 0.0) inset;')
+                    showMessage();
+                }
+        }
+    }
+
+submit.addEventListener('click', () => {
+    checkInputs()
+});
+
+changeStyle();
 slideShow();
