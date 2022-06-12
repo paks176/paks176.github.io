@@ -17,7 +17,7 @@ function getCurrentScroll(maxScroll) {
     if (blogBlock.scrollLeft < 100) {
         return 0;
     }
-    if ((maxScroll - blogBlock.scrollLeft) < 50) {
+    if ((maxScroll - blogBlock.scrollLeft) < 150) {
         return maxScroll;
     }
     return Math.round(blogBlock.scrollLeft)
@@ -61,13 +61,13 @@ function checkPosition() {
 }
 
 buttonLeft.addEventListener('click', (event) => {
-    checkPosition();
     blogBlock.scrollLeft = blogBlock.scrollLeft - 315;
+    checkPosition();
 });
 
 buttonRight.addEventListener('click', (event) => {
-    checkPosition();
     blogBlock.scrollLeft = blogBlock.scrollLeft + 315;
+    checkPosition();
 });
 
 window.addEventListener('DOMContentLoaded', checkPosition)

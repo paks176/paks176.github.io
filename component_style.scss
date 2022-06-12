@@ -92,7 +92,7 @@
 	&__container {
 		display: flex;
 		flex-wrap: nowrap;
-		width: 100%;
+		min-width: 1412px;
 	}
 
 	&__buttons {
@@ -110,8 +110,8 @@
 		&-left {
 			background-image: url(arrow-left.png);
 			visibility: hidden;
-			width: 40px;
-			height: 60px;
+			width: 54px;
+			height: 55px;
 			background-position: center;
 			background-repeat: no-repeat;
 			background-size: cover;
@@ -121,8 +121,8 @@
 		&-right {
 			background-image: url(arrow-right.png);
 			visibility: hidden;
-			width: 40px;
-			height: 60px;
+			width: 54px;
+			height: 55px;
 			background-position: center;
 			background-repeat: no-repeat;
 			background-size: cover;
@@ -133,7 +133,7 @@
 		&-flexcenter {
 			overflow-x:hidden;
 			max-width: 1412px;
-    		flex-grow: 1;
+    		flex-grow: 0.97;
 		}
 		
 		&-flexcontainer {
