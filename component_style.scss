@@ -1,0 +1,152 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+#card-1 {
+	background-image: url(./card_image_1.jpeg);
+}
+
+#card-2 {
+	background-image: url(./card_image_2.jpeg);
+}
+
+#card-3 {
+	background-image: url(./card_image_3.jpeg);
+}
+
+#card-4 {
+	background-image: url(./card_image_4.jpeg);
+}
+
+.blog {
+
+	&__main-container {
+		position: relative;
+	}
+
+	&__a {
+		text-decoration: none;
+		color: inherit;
+	}
+
+	&__block {
+		max-width: 1412px;
+		padding: 0 32px 0 32px;
+		margin: 0 auto;
+		overflow-x: hidden;
+		scroll-behavior: smooth;
+	}
+
+	&__card {
+		min-width: 313px;
+		max-width: 315px;
+		border: 1px solid #e5e5e5;
+		margin-right: 24px;
+
+		&--top {
+			height: 208px;
+			background-size: cover;
+    	background-position: center;
+    	background-repeat: no-repeat;
+		}
+
+		&--bottom {
+			padding: 25px 29px;
+
+			&-tag {
+				font: 15px/25px Montserrat,Arial,sans-serif;
+				font-size: .8em;
+				line-height: calc(1em + 7px);
+				padding: 2px 7px 3px;
+				margin: 0 2px 4px;
+				border-radius: 3px;
+				border: 1px solid #e5e5e5;
+				background: #fafafa;
+				width: fit-content;
+				margin-bottom: 9px;
+				color: #666;
+				// background: var(--light_bg_black);
+				// border-color: var(--stroke_black);
+				// color: var(--light_basic_text_black);
+			}
+
+			&-header {
+				font-size: 1.06667em;
+    		line-height: calc(1em + 7px);
+				font-weight: 700;
+				font-family: "Montserrat", Arial, sans-serif;
+			}
+			
+
+			&-date {
+				font: 15px/25px Montserrat,Arial,sans-serif;
+				font-size: .86667em;
+				line-height: calc(1em + 7px);
+				margin-top: 19px;
+				color: #999;
+			}	
+		}
+	}
+
+	&__container {
+		display: flex;
+		flex-wrap: nowrap;
+		width: 100%;
+	}
+
+	&__buttons {
+
+		&-container {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			position: absolute;
+			z-index: 1;
+			height: 408px;
+			width: 100%;
+		}
+
+		&-left {
+			background-image: url(arrow-left.png);
+			visibility: hidden;
+			width: 40px;
+			height: 60px;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+			cursor: pointer;
+			z-index: 3;
+		}
+		&-right {
+			background-image: url(arrow-right.png);
+			visibility: hidden;
+			width: 40px;
+			height: 60px;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+			cursor: pointer;
+			z-index: 3;
+		}
+
+		&-flexcenter {
+			overflow-x:hidden;
+			max-width: 1412px;
+    		flex-grow: 1;
+		}
+		
+		&-flexcontainer {
+			display: flex;
+    		justify-content: space-between;
+		}
+	}
+}
+
+.visible {
+	visibility: visible !important;
+}
+
+.hidden {
+	visibility: hidden !important;
+}
