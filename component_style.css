@@ -120,6 +120,7 @@
   background-size: cover;
   cursor: pointer;
   z-index: 3;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 .blog__buttons-right {
@@ -132,6 +133,7 @@
   background-size: cover;
   cursor: pointer;
   z-index: 3;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 .blog__buttons-flexcenter {

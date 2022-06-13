@@ -117,6 +117,7 @@
 			background-size: cover;
 			cursor: pointer;
 			z-index: 3;
+			-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 		}
 		&-right {
 			background-image: url(arrow-right.png);
@@ -128,6 +129,7 @@
 			background-size: cover;
 			cursor: pointer;
 			z-index: 3;
+			-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 		}
 
 		&-flexcenter {
